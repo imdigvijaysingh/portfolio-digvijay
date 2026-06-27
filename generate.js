@@ -13,7 +13,25 @@ cities.forEach(city => {
     const metaDesc = `Looking for the best MERN stack developer or website developer in ${city}? Digvijay Singh crafts premium, high-performance web applications. Hire now!`;
     const h1 = `Premium <span class="text-gradient">MERN Stack</span> Developer in ${city}`;
     const heroDesc = `Crafting exceptional, high-performance web applications with stunning UIs for businesses in ${city}. Building the web of tomorrow, today.`;
+    
+    const schema = `
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Digvijay Singh",
+      "jobTitle": "MERN Stack Developer",
+      "url": "https://digvijayp.netlify.app",
+      "sameAs": [
+        "https://github.com/imdigvijaysingh",
+        "https://www.linkedin.com/in/digvijay-singh-pundir-12a628343/"
+      ]
+    }
+    </script>
+    `;
 
+    // Add schema before </head>
+    cityHtml = cityHtml.replace('</head>', `${schema}\n  </head>`);
     // Replace title
     cityHtml = cityHtml.replace('<title>Portfolio - Digvijay Singh</title>', `<title>${title}</title>`);
     // Replace meta description
@@ -80,6 +98,16 @@ const navHtml = navMatch ? navMatch[0].replace(/href="#/g, 'href="../index.html#
 const footerHtml = footerMatch ? footerMatch[0].replace(/src="\.\/assets/g, 'src="../assets') : '';
 
 let blogIndexLinks = '';
+const baseUrl = 'https://digvijayp.netlify.app';
+let sitemapUrls = [
+    `<url><loc>${baseUrl}/</loc><priority>1.0</priority></url>`,
+    `<url><loc>${baseUrl}/blog.html</loc><priority>0.9</priority></url>`
+];
+
+// Add city pages to sitemap
+cities.forEach(city => {
+    sitemapUrls.push(`<url><loc>${baseUrl}/developer-in-${city.toLowerCase()}.html</loc><priority>0.8</priority></url>`);
+});
 
 blogTopics.forEach((topic, index) => {
     const slug = topic.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
@@ -125,10 +153,23 @@ blogTopics.forEach((topic, index) => {
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta name="description" content="${metaDesc}">
+    <link rel="canonical" href="${baseUrl}/blog/${slug}.html" />
     <style>
       .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
       .dark .glass-card { background: rgba(42, 0, 74, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "${topic}",
+      "author": {
+        "@type": "Person",
+        "name": "Digvijay Singh"
+      },
+      "datePublished": "2026-06-${27 - (index % 27)}"
+    }
+    </script>
   </head>
   <body class="font-Outfit leading-8 dark:bg-darkTheme dark:text-white bg-slate-50 relative overflow-x-hidden transition-colors duration-300">
     <div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-50 dark:opacity-20 mix-blend-multiply dark:mix-blend-screen transition-opacity">
@@ -158,6 +199,8 @@ blogTopics.forEach((topic, index) => {
         <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">${metaDesc}</p>
         <span class="text-purple-600 font-medium">Read Article &rarr;</span>
     </a>\n`;
+    
+    sitemapUrls.push(`<url><loc>${baseUrl}/blog/${slug}.html</loc><priority>0.7</priority></url>`);
 });
 
 // Generate main blog.html listing page
@@ -210,5 +253,21 @@ const blogMainHtml = `<!doctype html>
 
 fs.writeFileSync(path.join(__dirname, 'blog.html'), blogMainHtml);
 console.log("Created blog.html main page");
+
+// Generate Sitemap
+const sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    ${sitemapUrls.join('\n    ')}
+</urlset>`;
+fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemapContent);
+console.log("Created sitemap.xml");
+
+// Generate robots.txt
+const robotsContent = `User-agent: *
+Allow: /
+
+Sitemap: ${baseUrl}/sitemap.xml`;
+fs.writeFileSync(path.join(__dirname, 'robots.txt'), robotsContent);
+console.log("Created robots.txt");
 
 console.log("All pages generated successfully!");
