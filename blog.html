@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog - Digvijay Singh | Web Development Insights</title>
+    <link rel="stylesheet" href="./output.css" />
+    <link rel="stylesheet" href="./input.css" />
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta name="description" content="Read the latest articles on MERN stack development, UI/UX trends, and SEO strategies.">
+    <style>
+      .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
+      .dark .glass-card { background: rgba(42, 0, 74, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); }
+      .text-gradient { background: linear-gradient(135deg, #b820e6 0%, #da7d20 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    </style>
+  </head>
+  <body class="font-Outfit leading-8 dark:bg-darkTheme dark:text-white bg-slate-50 relative overflow-x-hidden transition-colors duration-300">
+    <div class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none opacity-50 dark:opacity-20 mix-blend-multiply dark:mix-blend-screen transition-opacity">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-purple-400/40 dark:bg-purple-600/30 rounded-full blur-[100px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-orange-400/40 dark:bg-orange-600/30 rounded-full blur-[100px]"></div>
+    </div>
+    
+    <nav
+      id="navbar"
+      class="w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex items-center justify-between z-50"
+    >
+      <p
+        class="bg-white bg-opacity-50 backdrop-blur-lg shadow-sm dark:bg-darkTheme dark:shadow-white/20 sr-only"
+      >
+        Hidden
+      </p>
+      <a href="#!">
+        <img
+          src="./assets/logo.png"
+          alt="Logo"
+          class="w-28 cursor-pointer mr-14 dark:hidden"
+        />
+        <img
+          src="./assets/logo_dark.png"
+          alt="Logo"
+          class="w-28 cursor-pointer mr-14 hidden dark:block"
+        />
+      </a>
+
+      <ul
+        id="navLink"
+        class="float-anim hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50 font-Ovo dark:border dark:border-white/30 dark:bg-transparent"
+      >
+        <li>
+          <a
+            class="hover:text-gray-500 dark:hover:text-gray-300 transition"
+            href="#top"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:text-gray-500 dark:hover:text-gray-300 transition"
+            href="#about"
+            >About me</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:text-gray-500 dark:hover:text-gray-300 transition"
+            href="#services"
+            >Services</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:text-gray-500 dark:hover:text-gray-300 transition"
+            href="#work"
+            >My Work</a
+          >
+        </li>
+        <li>
+          <a
+            class="hover:text-gray-500 dark:hover:text-gray-300 transition"
+            href="#contact"
+            >Contact me</a
+          >
+        </li>
+      </ul>
+
+      <div class="flex items-center gap-4 ">
+        <button onclick="toggleTheme()">
+          <img src="./assets/moon_icon.png" alt="" class="w-5 dark:hidden" />
+          <img
+            src="./assets/sun_icon.png"
+            alt=""
+            class="w-5 hidden dark:block"
+          />
+        </button>
+
+        <a
+          href="#contact"
+          class="float-anim hidden lg:flex items-center gap-3 px-8 py-1.5 border border-gray-300 hover:bg-slate-100/70 dark:hover:bg-darkHover rounded-full ml-4 font-Ovo dark:border-white/30"
+        >
+          Contact
+          <img src="./assets/arrow-icon.png" alt="" class="w-3 dark:hidden" />
+          <img
+            src="./assets/arrow-icon-dark.png"
+            alt=""
+            class="w-3 hidden dark:block"
+          />
+        </a>
+
+        <button class="block md:hidden ml-3 " onclick="openMenu()">
+          <img src="./assets/menu-black.png" alt="" class="w-6 dark:hidden" />
+          <img
+            src="./assets/menu-white.png"
+            alt=""
+            class="w-6 hidden dark:block"
+          />
+        </button>
+      </div>
+      <!-- ----- mobile menu ------ -->
+      <ul
+        id="mobileMenu"
+        class="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 font-Ovo dark:bg-darkHover dark:text-white"
+      >
+        <div class="absolute right-6 top-6" onclick="closeMenu()">
+          <img
+            src="./assets/close-black.png"
+            alt=""
+            class="w-5 cursor-pointer dark:hidden"
+          />
+          <img
+            src="./assets/close-white.png"
+            alt=""
+            class="w-5 cursor-pointer hidden dark:block"
+          />
+        </div>
+
+        <li><a href="#top" onclick="closeMenu()">Home</a></li>
+        <li><a href="#about" onclick="closeMenu()">About me</a></li>
+        <li><a href="#services" onclick="closeMenu()">Services</a></li>
+        <li><a href="#work" onclick="closeMenu()">My Work</a></li>
+        <li><a href="#contact" onclick="closeMenu()">Contact me</a></li>
+      </ul>
+    </nav>
+    
+    <div class="w-11/12 max-w-5xl mx-auto pt-32 pb-20 relative z-10" data-aos="fade-up">
+        <h1 class="text-5xl md:text-6xl font-Ovo font-bold text-center mb-4">Development <span class="text-gradient">Insights</span></h1>
+        <p class="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-16 text-lg">Discover expert articles on MERN stack development, modern UI design, and strategies to scale your digital presence.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <a href="./blog/why-mern-stack-is-the-future-of-web-development.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Why MERN Stack is the Future of Web Development</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Why MERN Stack is the Future of Web Development. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/how-to-choose-the-best-website-developer-for-your-startup.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">How to Choose the Best Website Developer for Your Startup</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on How to Choose the Best Website Developer for Your Startup. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/top-10-ui-ux-trends-for-modern-web-applications.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Top 10 UI/UX Trends for Modern Web Applications</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Top 10 UI/UX Trends for Modern Web Applications. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/react-vs-nextjs-which-one-should-you-choose.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">React vs NextJS: Which One Should You Choose?</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on React vs NextJS: Which One Should You Choose?. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/the-ultimate-guide-to-local-seo-for-web-developers.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">The Ultimate Guide to Local SEO for Web Developers</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on The Ultimate Guide to Local SEO for Web Developers. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/building-scalable-backend-systems-with-nodejs-and-mongodb.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Building Scalable Backend Systems with NodeJS and MongoDB</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Building Scalable Backend Systems with NodeJS and MongoDB. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/why-fast-loading-speeds-are-critical-for-your-website.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Why Fast Loading Speeds are Critical for Your Website</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Why Fast Loading Speeds are Critical for Your Website. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/how-glassmorphism-is-changing-web-design.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">How Glassmorphism is Changing Web Design</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on How Glassmorphism is Changing Web Design. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/understanding-core-web-vitals-for-better-ranking.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Understanding Core Web Vitals for Better Ranking</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Understanding Core Web Vitals for Better Ranking. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/the-power-of-framer-motion-in-react-applications.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">The Power of Framer Motion in React Applications</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on The Power of Framer Motion in React Applications. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/how-to-hire-the-right-frontend-developer.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">How to Hire the Right Frontend Developer</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on How to Hire the Right Frontend Developer. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/cost-of-building-a-custom-mern-stack-application.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Cost of Building a Custom MERN Stack Application</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Cost of Building a Custom MERN Stack Application. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/tailwind-css-vs-standard-css-a-comprehensive-review.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Tailwind CSS vs Standard CSS: A Comprehensive Review</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Tailwind CSS vs Standard CSS: A Comprehensive Review. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/how-web-development-impacts-your-business-growth.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">How Web Development Impacts Your Business Growth</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on How Web Development Impacts Your Business Growth. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/top-security-practices-for-node-js-applications.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Top Security Practices for Node.js Applications</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Top Security Practices for Node.js Applications. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/integrating-ai-into-next-js-applications.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Integrating AI into Next.js Applications</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Integrating AI into Next.js Applications. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/why-mobile-first-design-is-non-negotiable.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Why Mobile-First Design is Non-Negotiable</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Why Mobile-First Design is Non-Negotiable. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/seo-strategies-for-single-page-applications-spas.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">SEO Strategies for Single Page Applications (SPAs)</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on SEO Strategies for Single Page Applications (SPAs). Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/the-role-of-mongodb-in-modern-data-management.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">The Role of MongoDB in Modern Data Management</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on The Role of MongoDB in Modern Data Management. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/creating-engaging-user-experiences-with-micro-animations.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Creating Engaging User Experiences with Micro-Animations</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Creating Engaging User Experiences with Micro-Animations. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/how-to-optimize-react-applications-for-performance.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">How to Optimize React Applications for Performance</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on How to Optimize React Applications for Performance. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/the-importance-of-accessibility-in-web-design.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">The Importance of Accessibility in Web Design</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on The Importance of Accessibility in Web Design. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/why-you-need-a-dedicated-backend-developer.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Why You Need a Dedicated Backend Developer</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Why You Need a Dedicated Backend Developer. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/building-restful-apis-with-express-js.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Building RESTful APIs with Express.js</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Building RESTful APIs with Express.js. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/the-evolution-of-javascript-from-vanilla-to-frameworks.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">The Evolution of JavaScript: From Vanilla to Frameworks</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on The Evolution of JavaScript: From Vanilla to Frameworks. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/how-to-plan-your-next-web-application-project.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">How to Plan Your Next Web Application Project</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on How to Plan Your Next Web Application Project. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/understanding-the-full-stack-development-process.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Understanding the Full Stack Development Process</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Understanding the Full Stack Development Process. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/the-benefits-of-server-side-rendering-for-seo.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">The Benefits of Server-Side Rendering for SEO</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on The Benefits of Server-Side Rendering for SEO. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/how-to-maintain-and-scale-your-web-application.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">How to Maintain and Scale Your Web Application</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on How to Maintain and Scale Your Web Application. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+<a href="./blog/choosing-the-right-tech-stack-for-your-mvp.html" class="block glass-card p-6 rounded-2xl hover:-translate-y-2 duration-300 shadow-lg hover:shadow-xl transition-all">
+        <h3 class="text-xl font-bold font-Ovo mb-2 dark:text-white">Choosing the Right Tech Stack for Your MVP</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">Read our comprehensive guide on Choosing the Right Tech Stack for Your MVP. Expert insights from a premium MERN stack developer.</p>
+        <span class="text-purple-600 font-medium">Read Article &rarr;</span>
+    </a>
+
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <div class="mt-20">
+      <div class="text-center">
+        <a href="#!">
+          <img
+            src="./assets/logo.png"
+            alt=""
+            class="w-36 mx-auto mb-2 dark:hidden"
+          />
+          <img
+            src="./assets/logo_dark.png"
+            alt=""
+            class="w-36 mx-auto mb-2 hidden dark:block"
+          />
+        </a>
+        <div class="w-max flex items-center gap-2 mx-auto">
+          <img src="./assets/mail_icon.png" alt="" class="w-5 dark:hidden" />
+          <img
+            src="./assets/mail_icon_dark.png"
+            alt=""
+            class="w-5 hidden dark:block"
+          />
+          <a href="mailto:digvijaysinghpundir18@gmail.com"
+            >digvijaysinghpundir18@gmail.com</a
+          >
+        </div>
+      </div>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ once: true, offset: 50 });</script>
+    <script src="./script.js"></script>
+  </body>
+</html>
