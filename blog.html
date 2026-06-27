@@ -33,7 +33,7 @@
       >
         Hidden
       </p>
-      <a href="#!">
+      <a href="#!" aria-label="Home">
         <img
           src="./assets/logo.png"
           alt="Logo"
@@ -87,8 +87,8 @@
         </li>
       </ul>
 
-      <div class="flex items-center gap-4 ">
-        <button onclick="toggleTheme()">
+      <div class="flex items-center gap-4">
+        <button onclick="toggleTheme()" aria-label="Toggle Theme">
           <img src="./assets/moon_icon.png" alt="" class="w-5 dark:hidden" />
           <img
             src="./assets/sun_icon.png"
@@ -110,7 +110,7 @@
           />
         </a>
 
-        <button class="block md:hidden ml-3 " onclick="openMenu()">
+        <button class="block md:hidden ml-3" onclick="openMenu()" aria-label="Open Menu">
           <img src="./assets/menu-black.png" alt="" class="w-6 dark:hidden" />
           <img
             src="./assets/menu-white.png"
@@ -124,7 +124,7 @@
         id="mobileMenu"
         class="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 font-Ovo dark:bg-darkHover dark:text-white"
       >
-        <div class="absolute right-6 top-6" onclick="closeMenu()">
+        <button class="absolute right-6 top-6" onclick="closeMenu()" aria-label="Close Menu">
           <img
             src="./assets/close-black.png"
             alt=""
@@ -135,7 +135,7 @@
             alt=""
             class="w-5 cursor-pointer hidden dark:block"
           />
-        </div>
+        </button>
 
         <li><a href="#top" onclick="closeMenu()">Home</a></li>
         <li><a href="#about" onclick="closeMenu()">About me</a></li>
@@ -145,6 +145,7 @@
       </ul>
     </nav>
     
+    <main>
     <div class="w-11/12 max-w-5xl mx-auto pt-32 pb-20 relative z-10" data-aos="fade-up">
         <h1 class="text-5xl md:text-6xl font-Ovo font-bold text-center mb-4">Development <span class="text-gradient">Insights</span></h1>
         <p class="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-16 text-lg">Discover expert articles on MERN stack development, modern UI design, and strategies to scale your digital presence.</p>
@@ -303,19 +304,20 @@
 
         </div>
     </div>
+    </main>
     
     <!-- Footer -->
     <div class="mt-20">
       <div class="text-center">
-        <a href="#!">
+        <a href="#!" aria-label="Home">
           <img
             src="./assets/logo.png"
-            alt=""
+            alt="Logo"
             class="w-36 mx-auto mb-2 dark:hidden"
           />
           <img
             src="./assets/logo_dark.png"
-            alt=""
+            alt="Logo"
             class="w-36 mx-auto mb-2 hidden dark:block"
           />
         </a>

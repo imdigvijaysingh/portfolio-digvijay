@@ -138,7 +138,9 @@ blogTopics.forEach((topic, index) => {
     
     ${navHtml}
     
+    <main>
     ${content}
+    </main>
     
     ${footerHtml}
     
@@ -187,6 +189,7 @@ const blogMainHtml = `<!doctype html>
     
     ${navMatch ? navMatch[0] : ''}
     
+    <main>
     <div class="w-11/12 max-w-5xl mx-auto pt-32 pb-20 relative z-10" data-aos="fade-up">
         <h1 class="text-5xl md:text-6xl font-Ovo font-bold text-center mb-4">Development <span class="text-gradient">Insights</span></h1>
         <p class="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-16 text-lg">Discover expert articles on MERN stack development, modern UI design, and strategies to scale your digital presence.</p>
@@ -195,6 +198,7 @@ const blogMainHtml = `<!doctype html>
             ${blogIndexLinks}
         </div>
     </div>
+    </main>
     
     ${footerMatch ? footerMatch[0] : ''}
     

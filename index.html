@@ -78,7 +78,7 @@
       >
         Hidden
       </p>
-      <a href="#!">
+      <a href="#!" aria-label="Home">
         <img
           src="./assets/logo.png"
           alt="Logo"
@@ -133,7 +133,7 @@
       </ul>
 
       <div class="flex items-center gap-4">
-        <button onclick="toggleTheme()">
+        <button onclick="toggleTheme()" aria-label="Toggle Theme">
           <img src="./assets/moon_icon.png" alt="" class="w-5 dark:hidden" />
           <img
             src="./assets/sun_icon.png"
@@ -155,7 +155,7 @@
           />
         </a>
 
-        <button class="block md:hidden ml-3" onclick="openMenu()">
+        <button class="block md:hidden ml-3" onclick="openMenu()" aria-label="Open Menu">
           <img src="./assets/menu-black.png" alt="" class="w-6 dark:hidden" />
           <img
             src="./assets/menu-white.png"
@@ -169,7 +169,7 @@
         id="mobileMenu"
         class="flex md:hidden flex-col gap-4 py-20 px-10 fixed -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500 font-Ovo dark:bg-darkHover dark:text-white"
       >
-        <div class="absolute right-6 top-6" onclick="closeMenu()">
+        <button class="absolute right-6 top-6" onclick="closeMenu()" aria-label="Close Menu">
           <img
             src="./assets/close-black.png"
             alt=""
@@ -180,7 +180,7 @@
             alt=""
             class="w-5 cursor-pointer hidden dark:block"
           />
-        </div>
+        </button>
 
         <li><a href="#top" onclick="closeMenu()">Home</a></li>
         <li><a href="#about" onclick="closeMenu()">About me</a></li>
@@ -190,6 +190,7 @@
       </ul>
     </nav>
 
+    <main>
     <!-- ----- home section ------ -->
     <div
       class="w-11/12 max-w-3xl text-center mx-auto h-screen flex flex-col items-center justify-center gap-4 relative z-10"
@@ -201,7 +202,7 @@
         alt=""
         class="rounded-full w-32 float-anim2 shadow-xl border-4 border-white dark:border-gray-800"
       />
-      <h3
+      <p
         class="flex items-end gap-2 text-xl md:text-2xl mb-3 font-Ovo tracking-wide"
       >
         Hi! I&apos;m Digvijay Singh
@@ -210,7 +211,7 @@
           alt=""
           class="w-6 mb-1 origin-bottom-right hover:rotate-12 transition-transform"
         />
-      </h3>
+      </p>
       <h1
         class="text-3xl sm:text-6xl lg:text-[66px] font-Ovo font-bold drop-shadow-sm"
       >
@@ -249,12 +250,12 @@
 
     <!-- ----- about me section ------ -->
     <div id="about" class="w-full px-[12%] py-10 scroll-mt-20 relative z-10">
-      <h4
+      <p
         class="text-center mb-2 text-lg font-Ovo text-gray-500 dark:text-gray-400 uppercase tracking-widest"
         data-aos="fade-up"
       >
         Introduction
-      </h4>
+      </p>
       <h2
         class="text-center text-5xl font-Ovo font-semibold mb-10"
         data-aos="fade-up"
@@ -356,9 +357,9 @@
               </p>
             </li>
           </ul>
-          <h4 class="my-6 text-gray-700 font-Ovo dark:text-white/80">
+          <h3 class="my-6 text-gray-700 font-Ovo dark:text-white/80">
             Tools i use
-          </h4>
+          </h3>
           <ul class="flex items-center gap-3 sm:gap-5">
             <li
               class="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-300 dark:border-white/30 rounded-lg cursor-pointer hover:-translate-y-1 duration-500"
@@ -400,7 +401,7 @@
 
     <!-- My Work Section -->
     <div id="work" class="w-full px-[12%] py-10 scroll-mt-20">
-      <h4 class="text-center mb-2 text-lg font-Ovo">My portfolio</h4>
+      <p class="text-center mb-2 text-lg font-Ovo">My portfolio</p>
       <h2 class="text-center text-5xl font-Ovo">My Projects</h2>
       <p class="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
         Welcome to my web development portfolio! Explore a collection of
@@ -533,7 +534,7 @@
       id="contact"
       class="w-full px-[12%] py-10 scroll-mt-20 bg-[url('./assets/footer-bg-color.png')] bg-no-repeat bg-[length:90%_auto] bg-center dark:bg-none"
     >
-      <h4 class="text-center mb-2 text-lg font-Ovo">Connect with me</h4>
+      <p class="text-center mb-2 text-lg font-Ovo">Connect with me</p>
       <h2 class="text-center text-5xl font-Ovo">Get in touch</h2>
       <p class="text-center max-w-2xl mx-auto mt-5 mb-12 font-Ovo">
         I'd love to hear from you! If you have any questions, comments or
@@ -584,19 +585,20 @@
         <p class="mt-4"></p>
       </form>
     </div>
+    </main>
 
     <!-- Footer -->
     <div class="mt-20">
       <div class="text-center">
-        <a href="#!">
+        <a href="#!" aria-label="Home">
           <img
             src="./assets/logo.png"
-            alt=""
+            alt="Logo"
             class="w-36 mx-auto mb-2 dark:hidden"
           />
           <img
             src="./assets/logo_dark.png"
-            alt=""
+            alt="Logo"
             class="w-36 mx-auto mb-2 hidden dark:block"
           />
         </a>
