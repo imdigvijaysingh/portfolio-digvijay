@@ -153,6 +153,7 @@ blogTopics.forEach((topic, index) => {
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta name="description" content="${metaDesc}">
+    <meta name="google-site-verification" content="K_PIkDwhAO0covFJS0w-rsH3mcWI9_0RT4quhAV1FhU" />
     <link rel="canonical" href="${baseUrl}/blog/${slug}.html" />
     <style>
       .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
@@ -218,6 +219,7 @@ const blogMainHtml = `<!doctype html>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Ovo&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta name="description" content="Read the latest articles on MERN stack development, UI/UX trends, and SEO strategies.">
+    <meta name="google-site-verification" content="K_PIkDwhAO0covFJS0w-rsH3mcWI9_0RT4quhAV1FhU" />
     <style>
       .glass-card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.3); }
       .dark .glass-card { background: rgba(42, 0, 74, 0.4); border: 1px solid rgba(255, 255, 255, 0.1); }
